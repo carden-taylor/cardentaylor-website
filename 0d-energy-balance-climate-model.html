@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero-Dimensional Energy-Balance Climate Model - Carden Taylor</title>
+</head>
+<body>
+
+    <h1>Carden Taylor</h1>
+    <p><i>Geophysics &middot; Climate Science &middot; Computational Modeling</i></p>
+
+    <p>
+        [ <a href="index.html">Home</a> |
+        <a href="index.html#about">About</a> |
+        <a href="index.html#research">Research</a> |
+        <a href="projects.html">Projects</a> |
+        <a href="index.html#contact">Contact</a> ]
+    </p>
+
+    <hr>
+
+    <p><a href="projects.html">&laquo; Back to Projects</a></p>
+
+    <h2>Zero-Dimensional Energy-Balance Climate Model: Simulating Radiative Forcing Dynamics</h2>
+    <p>
+        <b>Author:</b> Carden Taylor &nbsp;|&nbsp;
+        <b>Period Modeled:</b> 1900&ndash;2025 &nbsp;|&nbsp;
+        <b>Repository:</b> <a href="https://github.com/carden-taylor/0d-climate-model">github.com/carden-taylor/0d-climate-model</a>
+    </p>
+
+    <h3>1. Radiative Equilibrium &amp; Graybody Baseline</h3>
+    <p>
+        Starting from radiative balance (P_in = P_out), incoming solar power across Earth's circular
+        cross-section is compared against graybody thermal emission across the full spherical surface:
+    </p>
+    <pre>
+P_in  = pi * R_E^2 * S_0 * (1 - alpha)
+P_out = 4 * pi * R_E^2 * epsilon_0 * sigma * T_K^4
+T_c   = [ (S_0 * (1 - alpha)) / (4 * epsilon_0 * sigma) ]^(1/4) - T_0
+    </pre>
+
+    <h3>2. Greenhouse Gas Radiative Forcing (IPCC / Myhre et al., 1998)</h3>
+    <p>
+        To account for atmospheric greenhouse gases, net radiative forcing is summed across CO2,
+        CH4, and N2O using pre-industrial baseline concentrations (1900) and exponential annual
+        concentration growth rates:
+    </p>
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>Species</th>
+            <th>Warming Influence</th>
+            <th>1900 Baseline</th>
+            <th>Annual Growth Rate</th>
+        </tr>
+        <tr>
+            <td>CO2</td>
+            <td>73.5%</td>
+            <td>C_0 = 295.0 ppm</td>
+            <td>r_c = 0.0030 (0.30%/yr)</td>
+        </tr>
+        <tr>
+            <td>CH4</td>
+            <td>18.5%</td>
+            <td>M_0 = 860.0 ppb</td>
+            <td>r_m = 0.0063 (0.63%/yr)</td>
+        </tr>
+        <tr>
+            <td>N2O</td>
+            <td>8.0%</td>
+            <td>N_0 = 275.0 ppb</td>
+            <td>r_n = 0.0018 (0.18%/yr)</td>
+        </tr>
+    </table>
+
+    <p>
+        Individual forcing terms (Delta F_CO2, Delta F_CH4, and Delta F_N2O, including overlap
+        terms) combine into time-dependent total forcing F_tot(t) and drive the transient ODE:
+    </p>
+    <pre>
+dT_K / dt = (1 / (rho * c_p * d)) * [ F_tot(t) - epsilon_0 * sigma * T_K^4 ]
+    </pre>
+
+    <h3>3. Forward Euler Approximation &amp; Model Constants</h3>
+    <p>
+        Because the nonlinear ODE is integrated forward in time, Forward Euler's Method
+        (T_{K,n+1} = T_{K,n} + h * g(t_n, T_{K,n})) is used in Python with step size h = 0.01 yr
+        (315,360 s) over 125 years (1900&ndash;2025) starting from T_K(0) = 287.10 K:
+    </p>
+    <ul>
+        <li>Total Solar Irradiance (S_0): 1361 W/m^2; Albedo (alpha): 0.31; Emissivity (epsilon_0): 0.61</li>
+        <li>Stefan-Boltzmann constant (sigma): 5.67e-8 W/(m^2 K^4); Earth radius (R_E): ~6.371e6 m</li>
+        <li>Ocean mixed-layer heat capacity components: density rho = 1025 kg/m^3, specific heat c_p = 3993 J/(kg K), depth d = 50 m</li>
+    </ul>
+
+    <h3>4. Validation Against NASA GISTEMP v4 (1900&ndash;2025)</h3>
+    <ul>
+        <li><b>RMSE:</b> 0.2369 &deg;C average deviation from NASA GISTEMP v4 observations</li>
+        <li><b>Model Standard Deviation (s):</b> 0.3846 &deg;C</li>
+        <li><b>Explained Variance (R^2):</b> ~0.528 (~53% of global temperature variability explained)</li>
+    </ul>
+
+    <p>
+        <img src="0d-energy-balance-climaate-model.png" alt="Global Mean Temperature Comparison (1900-2025) & Residuals Plot" width="500"><br>
+    </p>
+
+    <h3>5. References &amp; Data Sources</h3>
+    <ul>
+        <li><a href="https://science.nasa.gov/earth/earth-observatory/measuring-earths-albedo-84499/">NASA Earth Observatory &ndash; Measuring Earth's Albedo</a></li>
+        <li><a href="https://earth.gsfc.nasa.gov/climate/projects/solar-irradiance/science">NASA GSFC &ndash; Total Solar Irradiance (S_0)</a></li>
+        <li><a href="https://www.sciencedirect.com/topics/engineering/stefan-boltzmann-constant">ScienceDirect &ndash; Stefan-Boltzmann Constant</a></li>
+        <li><a href="https://math.nyu.edu/~kleeman/zero_dim_ebm.html">Courant / NYU &ndash; Zero-Dimensional Energy Balance Model</a></li>
+        <li><a href="https://acd-ext.gsfc.nasa.gov/anonftp/acd/daac_ozone/Lecture4/Text/Semifinal/blackbodyintro.html">NASA GSFC &ndash; Blackbody Radiation</a></li>
+        <li><a href="https://www.epa.gov/ghgemissions/overview-greenhouse-gases">U.S. EPA &ndash; Overview of Greenhouse Gases</a></li>
+        <li><a href="https://www.ijmo.org/vol9/726-Q287.pdf">IJMO &ndash; Radiative Forcing &amp; Climate Modeling Reference</a></li>
+        <li><a href="https://ui.adsabs.harvard.edu/abs/2014EnEnv..25.1439L/abstract">ADS &ndash; CO2 Radiative Forcing Formulation</a></li>
+        <li><a href="https://www.ipcc.ch/site/assets/uploads/2018/07/WGI_AR5_Chap_8_SM.pdf">IPCC AR5 WG1 Chapter 8 Supplementary Material &ndash; CH4 &amp; N2O Forcing</a></li>
+    </ul>
+
+    <hr>
+
+    <p>
+        [ <a href="projects.html">&laquo; Back to Projects</a> | <a href="index.html">Home</a> ]
+    </p>
+    <p><small>Last updated: November 2026</small></p>
+
+</body>
+</html>
