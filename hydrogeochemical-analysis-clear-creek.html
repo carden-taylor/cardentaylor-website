@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clear Creek Fluvial Acidification Study - Carden Taylor</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="top-banner banner-with-bg">
+  <img class="banner-bg-img" src="banner.png" alt="0D Energy-Balance Climate Model" aria-hidden="true">
+  <div class="banner-overlay-content">
+    <div class="banner-left">
+      <div class="banner-titles">
+        <div class="agency-line">Carden Taylor &mdash; Geophysical Engineering</div>
+        <div class="sub-line">Climate Geophysics &amp; Applied Mathematics Portfolio</div>
+      </div>
+    </div>
+    <div class="banner-right">
+      Colorado School of Mines<br>
+      School of Earth, Space, and Planets<br>
+      Golden, Colorado
+    </div>
+  </div>
+</header>
+
+    <div class="portal-body">
+      <nav class="left-nav" aria-label="Site Navigation">
+        <ul>
+          <li><a href="index.html">Portal Home</a></li>
+          <li><a href="index.html#about">About &amp; Background</a></li>
+          <li><a href="projects.html">Projects &amp; Models</a></li>
+          <li><a href="0d-energy-balance-climate-model.html">0D EBM Study</a></li>
+          <li><a href="clear-creek-acidification.html" class="active">Clear Creek Study</a></li>
+          <li><a href="#sec1">1. Background &amp; Argo Tunnel</a></li>
+          <li><a href="#sec2">2. Sampling &amp; Hypotheses</a></li>
+          <li><a href="#sec3">3. Field Data &amp; ANOVA</a></li>
+          <li><a href="#sec4">4. Ecological Implications</a></li>
+          <li><a href="#sec5">5. Works Cited</a></li>
+        </ul>
+
+        <div class="sidebar-box">
+          <h4>Study Snapshot</h4>
+          <b>Author:</b> Carden Taylor<br>
+          <b>Date:</b> April 25, 2026<br>
+          <b>Sites:</b> 3 (n = 3 trials each)<br>
+          <b>F-Stat:</b> 46.5<br>
+          <b>P-Value:</b> $2.2261 \times 10^{-4}$
+        </div>
+      </nav>
+
+      <main class="center-main">
+        <p><a href="projects.html">&laquo; Back to Projects</a> | <a href="index.html">Home</a></p>
+        <h1>Identifying the Potential Ecological Implications of Mining-Related Fluvial Acidification of Clear Creek, Colorado</h1>
+        <p>
+          <b>Author:</b> Carden Taylor &nbsp;|&nbsp;
+          <b>Sampling Date:</b> April 25, 2026
+        </p>
+
+        <h2 id="sec1">1. Background &amp; Argo Tunnel Context</h2>
+        <p>
+          Clear Creek flows roughly sixty-six miles along Colorado's Front Range from near Loveland
+          Pass to just north of Commerce City as a tributary of the South Platte River. Historic
+          mining drainage—exemplified by the Argo Tunnel west of the Argo Gold Mill in Idaho
+          Springs—has long introduced dissolved metals into the creek, with a 2005 Ohio State
+          University Superfund Research Program sample downstream of the Argo Tunnel reporting
+          $2960\text{ }\mu\text{g/L}$ copper, $7610\text{ }\mu\text{g/L}$ zinc, and $19500\text{ }\mu\text{g/L}$
+          manganese.
+        </p>
+
+        <h2 id="sec2">2. Sampling Sites &amp; Hypotheses</h2>
+        <p>
+          On April 25, 2026, three pH measurements were collected at distinct sub-locations within
+          each of three sites using litmus paper (with $\pm 0.1$ reading uncertainty):
+        </p>
+        <ul>
+          <li><b>Georgetown (Control):</b> Upstream baseline near the upper tributary ($39^\circ 42' 9''\text{N}$, $105^\circ 42' 12''\text{W}$)</li>
+          <li><b>Idaho Springs (Impact):</b> Downstream of the Argo Gold Mill / Argo Tunnel influence ($39^\circ 44' 32''\text{N}$, $105^\circ 30' 22''\text{W}$)</li>
+          <li><b>Golden (Recovery):</b> Near the tennis courts in Golden to check downstream recovery ($39^\circ 45' 16''\text{N}$, $105^\circ 13' 36''\text{W}$)</li>
+        </ul>
+        <p>
+          <b>Null Hypothesis ($H_0$):</b> Mining-related discharge from the Argo Tunnel has no effect on
+          Clear Creek pH near Idaho Springs ($\mu_{\text{pH Georgetown}} = \mu_{\text{pH Idaho Springs}} = \mu_{\text{pH Golden}}$).
+        </p>
+        <p>
+          <b>Alternative Hypothesis ($H_A$):</b> Mining-related discharge from the Argo Tunnel has a
+          statistically significant effect on Clear Creek pH near Idaho Springs.
+        </p>
+
+        <h2 id="sec3">3. Observed pH Data &amp; One-Way ANOVA</h2>
+        <table class="data-table">
+          <tr>
+            <th>Location &amp; Coordinates</th>
+            <th>Trial 1</th>
+            <th>Trial 2</th>
+            <th>Trial 3</th>
+            <th>Average pH</th>
+          </tr>
+          <tr>
+            <td>Georgetown, CO<br><small>$39^\circ 42' 9''\text{N}$, $105^\circ 42' 12''\text{W}$</small></td>
+            <td>7.20</td>
+            <td>7.10</td>
+            <td>7.20</td>
+            <td>7.17</td>
+          </tr>
+          <tr>
+            <td>Idaho Springs, CO<br><small>$39^\circ 44' 32''\text{N}$, $105^\circ 30' 22''\text{W}$</small></td>
+            <td>6.60</td>
+            <td>6.80</td>
+            <td>6.60</td>
+            <td>6.76</td>
+          </tr>
+          <tr>
+            <td>Golden, CO<br><small>$39^\circ 45' 16''\text{N}$, $105^\circ 13' 36''\text{W}$</small></td>
+            <td>7.30</td>
+            <td>7.20</td>
+            <td>7.30</td>
+            <td>7.23</td>
+          </tr>
+        </table>
+
+        <table class="data-table">
+          <tr>
+            <th>ANOVA Source</th>
+            <th>DF</th>
+            <th>SS</th>
+            <th>MS</th>
+            <th>F-Stat</th>
+            <th>P-Value</th>
+          </tr>
+          <tr>
+            <td>Between Groups</td>
+            <td>2</td>
+            <td>0.62</td>
+            <td>0.31</td>
+            <td>46.5</td>
+            <td>$2.2261 \times 10^{-4}$</td>
+          </tr>
+          <tr>
+            <td>Within Groups</td>
+            <td>6</td>
+            <td>0.04</td>
+            <td>0.0067</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>8</td>
+            <td>0.66</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+          </tr>
+        </table>
+        <p>
+          At $p = 0.05$, the one-way ANOVA ($F = 46.5$, $p \approx 2.2261 \times 10^{-4}$) supports
+          rejecting $H_0$ in favor of $H_A$, while noting that $n = 3$ trials per site warrants
+          caution and points to a strong statistical trend rather than proof beyond all doubt.
+        </p>
+
+        <h2 id="sec4">4. Ecological Implications &amp; Remediation</h2>
+        <p>
+          Over 75% of native wildlife depends on riparian zones (USGS), and freshwater acidification
+          can disrupt ecosystems across trophic levels. Root damage in most flora typically occurs
+          below pH 5.0 (reducing nutrient uptake, biomass, and food availability), whereas trout—key
+          freshwater bioindicators, including native Greenback Cutthroat Trout—generally require pH
+          6.5&ndash;8.5 and experience reproductive failure below pH 6.0 (Vermont Fish &amp; Wildlife
+          Department). Although observed pH remained above those critical thresholds—aided by lime
+          neutralization at the Argo Tunnel Water Treatment Facility (ATWTF, U.S. EPA)—discharge
+          fluctuations make ongoing monitoring and waste management essential.
+        </p>
+
+        <h2 id="sec5">5. Works Cited</h2>
+        <ul>
+          <li><a href="https://u.osu.edu/idahospringssuperfund/toxicity/">Ohio State University Superfund Research Program &ndash; Clear Creek Superfund Site</a></li>
+          <li><a href="https://www.scientificamerican.com/article/like-oceans-freshwater-is-also-acidifying/">Scientific American &ndash; Freshwater Acidification: A Hidden Environmental Problem</a></li>
+          <li><a href="https://pubs.usgs.gov/imap/i-2760/i-2760pam.pdf">U.S. Geological Survey &ndash; Geologic Map of the Idaho Springs District, Colorado</a></li>
+          <li><a href="https://www.vtfishandwildlife.com/learn-more/vermont-critters/fish/rainbow-trout">Vermont Fish &amp; Wildlife Department &ndash; Trout &amp; Freshwater pH Thresholds</a></li>
+          <li><a href="https://www.epa.gov/sites/default/files/2015-07/documents/final_argo_wtp_rse.pdf">U.S. Environmental Protection Agency &ndash; Final Remedial Investigation/Feasibility Study, Argo Tunnel Water Treatment Plant</a></li>
+        </ul>
+      </main>
+
+      <aside class="right-panel" aria-label="Site pH Summary">
+        <h2>Site pH Averages</h2>
+
+        <div class="station-box">
+          <div class="station-header">Mean pH by Corridor</div>
+          <b>Georgetown:</b> 7.17 (Control)<br>
+          <b>Idaho Springs:</b> 6.76 (Argo zone)<br>
+          <b>Golden:</b> 7.23 (Recovery)
+        </div>
+
+        <div class="station-box" style="margin-top: 12px;">
+          <div class="station-header">Ecological Thresholds</div>
+          <b>Trout Comfort Range:</b> 6.5&ndash;8.5<br>
+          <b>Trout Reproduction Limit:</b> &lt; 6.0<br>
+          <b>Flora Root Damage:</b> &lt; 5.0
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <div>[ <a href="projects.html">&laquo; Back to Projects</a> | <a href="index.html">Home</a> ]</div>
+      <div>Last updated: November 2026</div>
+    </footer>
+  </div>
+</body>
+</html>
