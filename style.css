@@ -1,61 +1,338 @@
+/* Classic NASA / GISS-inspired scientific portal stylesheet */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #111827;
-    color: #f9fafb;
-    line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  background-color: #d8dee4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: #1a1a1a;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 25px 8%;
-    align-items: center;
+.page-wrapper {
+  max-width: 1020px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-left: 1px solid #8c99a6;
+  border-right: 1px solid #8c99a6;
+  border-bottom: 1px solid #8c99a6;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
+/* Top NASA / Institution Banner */
+.top-banner {
+  background: linear-gradient(90deg, #0b3d91 0%, #164e9e 58%, #27588c 100%);
+  color: #ffffff;
+  padding: 12px 18px;
+  border-bottom: 3px solid #fc3d21;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
 
-header {
-    padding: 150px 10%;
-    min-height: 75vh;
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-header h1 {
-    font-size: 70px;
-    margin: 20px 0;
+.mission-badge {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background-color: #06255c;
+  border: 2px solid #8ab4f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
 
-header h3 {
-    font-size: 24px;
-    font-weight: 400;
-    max-width: 550px;
-    margin-bottom: 30px;
+.mission-badge .badge-top {
+  font-size: 13px;
+  color: #ffffff;
+  line-height: 1.1;
 }
 
-header p {
-    color: #60a5fa;
-    letter-spacing: 2px;
+.mission-badge .badge-sub {
+  font-size: 8px;
+  color: #bcd4f8;
+  line-height: 1.1;
 }
 
-header a {
-    color: #60a5fa;
+.banner-titles .agency-line {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  line-height: 1.25;
 }
 
-section {
-    padding: 80px 10%;
-    border-top: 1px solid #374151;
+.banner-titles .sub-line {
+  font-size: 12.5px;
+  color: #dce8fa;
+  line-height: 1.25;
 }
 
-section h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
+.banner-right {
+  text-align: right;
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: #e6eef8;
+}
+
+/* Three-column classic portal grid */
+.portal-body {
+  display: grid;
+  grid-template-columns: 175px 1fr 255px;
+  min-height: 520px;
+}
+
+/* Left Sidebar Navigation */
+.left-nav {
+  background-color: #eef1f4;
+  border-right: 1px solid #b8c2cc;
+  padding-top: 6px;
+}
+
+.left-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.left-nav li {
+  border-bottom: 1px solid #cfd6de;
+}
+
+.left-nav a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 12.5px;
+  color: #1a4789;
+  background-color: #eef1f4;
+}
+
+.left-nav a:hover {
+  background-color: #dfe6ed;
+  color: #0b2d5e;
+  text-decoration: underline;
+}
+
+.left-nav a.active {
+  background-color: #ffffff;
+  color: #111111;
+  border-left: 4px solid #fc3d21;
+  padding-left: 8px;
+}
+
+.sidebar-box {
+  margin: 12px 10px;
+  padding: 8px;
+  background-color: #f8f9fa;
+  border: 1px solid #c5cdd6;
+  font-size: 11.5px;
+}
+
+.sidebar-box h4 {
+  margin: 0 0 5px 0;
+  font-size: 11.5px;
+  color: #0b3d91;
+  border-bottom: 1px solid #d5dce3;
+  padding-bottom: 3px;
+}
+
+/* Center Main Column */
+.center-main {
+  padding: 16px 20px;
+  background-color: #ffffff;
+}
+
+.center-main h1 {
+  margin: 0 0 10px 0;
+  font-size: 19px;
+  color: #111111;
+  border-bottom: 1px solid #c8d0d8;
+  padding-bottom: 5px;
+}
+
+.center-main h2 {
+  margin: 18px 0 7px 0;
+  font-size: 15px;
+  color: #111111;
+}
+
+.center-main h3 {
+  margin: 14px 0 5px 0;
+  font-size: 13.5px;
+  color: #0b3d91;
+}
+
+.center-main p {
+  margin: 0 0 10px 0;
+}
+
+a {
+  color: #1a4789;
+}
+
+a:visited {
+  color: #4b2e83;
+}
+
+a:hover {
+  color: #b31b1b;
+}
+
+.update-item {
+  margin-bottom: 12px;
+}
+
+.update-date {
+  font-weight: bold;
+  color: #111111;
+}
+
+/* Right Figures & Data Column */
+.right-panel {
+  background-color: #f7f9fb;
+  border-left: 1px solid #c5cdd6;
+  padding: 14px 12px;
+}
+
+.right-panel h2 {
+  margin: 0 0 10px 0;
+  font-size: 15px;
+  color: #111111;
+  border-bottom: 1px solid #c8d0d8;
+  padding-bottom: 4px;
+}
+
+.figure-block {
+  margin-bottom: 14px;
+  background-color: #ffffff;
+  border: 1px solid #bcc5cf;
+  padding: 6px;
+}
+
+.figure-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #1a4789;
+  margin-bottom: 4px;
+}
+
+.figure-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 4px;
+}
+
+.figure-block img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d0d7de;
+}
+
+.figure-caption {
+  font-size: 11px;
+  color: #444444;
+  margin-top: 4px;
+}
+
+.station-box {
+  background-color: #eef2f6;
+  border: 1px solid #b5bec8;
+  padding: 6px;
+  font-size: 11px;
+}
+
+.station-header {
+  font-weight: bold;
+  color: #111111;
+  border-bottom: 1px solid #c5cdd6;
+  padding-bottom: 3px;
+  margin-bottom: 4px;
+}
+
+/* Tables & Equations */
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px 0;
+  font-size: 12px;
+}
+
+table.data-table th {
+  background-color: #e4eaf1;
+  color: #111111;
+  text-align: left;
+  padding: 5px 7px;
+  border: 1px solid #9aa6b2;
+}
+
+table.data-table td {
+  padding: 5px 7px;
+  border: 1px solid #b8c2cc;
+}
+
+.eq-box {
+  background-color: #f4f6f9;
+  border: 1px solid #c5cdd6;
+  padding: 8px 10px;
+  margin: 8px 0 12px 0;
+  overflow-x: auto;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #eef1f4;
+  border-top: 1px solid #b8c2cc;
+  padding: 9px 16px;
+  font-size: 11.5px;
+  color: #333333;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 860px) {
+  .portal-body {
+    grid-template-columns: 160px 1fr;
+  }
+  .right-panel {
+    grid-column: 1 / -1;
+    border-left: none;
+    border-top: 1px solid #c5cdd6;
+  }
+}
+
+@media (max-width: 620px) {
+  .top-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .banner-right {
+    text-align: left;
+  }
+  .portal-body {
+    grid-template-columns: 1fr;
+  }
+  .left-nav {
+    border-right: none;
+    border-bottom: 1px solid #b8c2cc;
+  }
 }

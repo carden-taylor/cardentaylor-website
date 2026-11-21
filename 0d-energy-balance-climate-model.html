@@ -1,129 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zero-Dimensional Energy-Balance Climate Model - Carden Taylor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero-Dimensional Energy-Balance Climate Model - Carden Taylor</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
+  <div class="page-wrapper">
+    <header class="top-banner">
+      <div class="banner-left">
+        <div class="banner-titles">
+          <div class="agency-line">Carden Taylor &mdash; Geophysical Engineering</div>
+          <div class="sub-line">Climate Geophysics &amp; Computational Modeling</div>
+        </div>
+      </div>
+      <div class="banner-right">
+        Completed: October 20, 2026<br>
+      </div>
+    </header>
 
-    <h1>Carden Taylor</h1>
-    <p><i>Geophysics &middot; Climate Science &middot; Computational Modeling</i></p>
+    <div class="portal-body">
+      <nav class="left-nav" aria-label="Site Navigation">
+        <ul>
+          <li><a href="index.html">Portal Home</a></li>
+          <li><a href="index.html#about">About &amp; Background</a></li>
+          <li><a href="projects.html">Projects &amp; Models</a></li>
+          <li><a href="0d-energy-balance-climate-model.html" class="active">0D EBM Study</a></li>
+          <li><a href="#sec1">1. Radiative Equilibrium</a></li>
+          <li><a href="#sec2">2. Radiative Forcing</a></li>
+          <li><a href="#sec3">3. Forward Euler &amp; Constants</a></li>
+          <li><a href="#sec4">4. GISTEMP v4 Validation</a></li>
+          <li><a href="#sec5">5. References</a></li>
+        </ul>
 
-    <p>
-        [ <a href="index.html">Home</a> |
-        <a href="#about">About</a> |
-        <a href="#projects">Projects</a> |
-        <a href="resume.pdf">Resume</a> |
-        <a href="#contact">Contact</a> ]
-    </p>
+        <div class="sidebar-box">
+          <h4>Model Summary</h4>
+          <b>Author:</b> Carden Taylor<br>
+          <b>Span:</b> 1900&ndash;2025 (125 yrs)<br>
+          <b>Step Size:</b> $h = 0.01\text{ yr}$<br>
+          <b>RMSE:</b> $0.2369\text{ }^\circ\text{C}$<br>
+          <b>$R^2$:</b> $\approx 0.528$
+        </div>
+      </nav>
 
-    <hr>
+      <main class="center-main">
+        <p><a href="projects.html">&laquo; Back to Projects</a> | <a href="index.html">Home</a></p>
+        <h1>Zero-Dimensional Energy-Balance Climate Model: Simulating Radiative Forcing Dynamics</h1>
+        <p>
+          <b>Author:</b> Carden Taylor &nbsp;|&nbsp;
+          <b>Repository:</b> <a href="https://github.com/carden-taylor/0d-climate-model">github.com/carden-taylor/0d-climate-model</a>
+        </p>
 
-    <p><a href="index.html">&laquo; Back to Homepage</a></p>
+        <h2 id="sec1">1. Radiative Equilibrium &amp; Graybody Baseline</h2>
+        <p>
+          Starting from radiative balance ($P_{\text{in}} = P_{\text{out}}$), incoming solar power
+          across Earth's circular cross-section is compared against graybody thermal emission across
+          the full spherical surface:
+        </p>
+        <div class="eq-box">
+          $$P_{\text{in}} = \pi R_E^2 S_0 (1 - \alpha)$$
+          $$P_{\text{out}} = 4\pi R_E^2 \epsilon_0 \sigma T_K^4$$
+          $$T_c = \left(\frac{S_0(1 - \alpha)}{4\epsilon_0\sigma}\right)^{1/4} - T_0$$
+        </div>
 
-    <h2>Zero-Dimensional Energy-Balance Climate Model: Simulating Radiative Forcing Dynamics</h2>
-    <p>
-        <b>Author:</b> Carden Taylor &nbsp;|&nbsp;
-        <b>Period Modeled:</b> 1900&ndash;2025 &nbsp;|&nbsp;
-        <b>Repository:</b> <a href="https://github.com/carden-taylor/0d-climate-model">github.com/carden-taylor/0d-climate-model</a>
-    </p>
+        <h2 id="sec2">2. Greenhouse Gas Radiative Forcing (IPCC / Myhre et al., 1998)</h2>
+        <p>
+          To account for atmospheric greenhouse gases, net radiative forcing is summed across
+          $\text{CO}_2$, $\text{CH}_4$, and $\text{N}_2\text{O}$ using pre-industrial baseline
+          concentrations (1900) and exponential annual concentration growth rates:
+        </p>
 
-    <h3>1. Radiative Equilibrium &amp; Graybody Baseline</h3>
-    <p>
-        Starting from radiative balance (P_in = P_out), incoming solar power across Earth's circular
-        cross-section is compared against graybody thermal emission across the full spherical surface:
-    </p>
-    <pre>
-P_in  = pi * R_E^2 * S_0 * (1 - alpha)
-P_out = 4 * pi * R_E^2 * epsilon_0 * sigma * T_K^4
-T_c   = [ (S_0 * (1 - alpha)) / (4 * epsilon_0 * sigma) ]^(1/4) - T_0
-    </pre>
-
-    <h3>2. Greenhouse Gas Radiative Forcing (IPCC / Myhre et al., 1998)</h3>
-    <p>
-        To account for atmospheric greenhouse gases, net radiative forcing is summed across CO2,
-        CH4, and N2O using pre-industrial baseline concentrations (1900) and exponential annual
-        concentration growth rates:
-    </p>
-
-    <table border="1" cellpadding="5" cellspacing="0">
-        <tr>
+        <table class="data-table">
+          <tr>
             <th>Species</th>
             <th>Warming Influence</th>
             <th>1900 Baseline</th>
             <th>Annual Growth Rate</th>
-        </tr>
-        <tr>
-            <td>CO2</td>
+          </tr>
+          <tr>
+            <td>$\text{CO}_2$</td>
             <td>73.5%</td>
-            <td>C_0 = 295.0 ppm</td>
-            <td>r_c = 0.0030 (0.30%/yr)</td>
-        </tr>
-        <tr>
-            <td>CH4</td>
+            <td>$C_0 = 295.0\text{ ppm}$</td>
+            <td>$r_c = 0.0030\text{ (0.30\%/yr)}$</td>
+          </tr>
+          <tr>
+            <td>$\text{CH}_4$</td>
             <td>18.5%</td>
-            <td>M_0 = 860.0 ppb</td>
-            <td>r_m = 0.0063 (0.63%/yr)</td>
-        </tr>
-        <tr>
-            <td>N2O</td>
+            <td>$M_0 = 860.0\text{ ppb}$</td>
+            <td>$r_m = 0.0063\text{ (0.63\%/yr)}$</td>
+          </tr>
+          <tr>
+            <td>$\text{N}_2\text{O}$</td>
             <td>8.0%</td>
-            <td>N_0 = 275.0 ppb</td>
-            <td>r_n = 0.0018 (0.18%/yr)</td>
-        </tr>
-    </table>
+            <td>$N_0 = 275.0\text{ ppb}$</td>
+            <td>$r_n = 0.0018\text{ (0.18\%/yr)}$</td>
+          </tr>
+        </table>
 
-    <p>
-        Individual forcing terms (Delta F_CO2, Delta F_CH4, and Delta F_N2O, including overlap
-        terms) combine into time-dependent total forcing F_tot(t) and drive the transient ODE:
-    </p>
-    <pre>
-dT_K / dt = (1 / (rho * c_p * d)) * [ F_tot(t) - epsilon_0 * sigma * T_K^4 ]
-    </pre>
+        <p>
+          Individual forcing terms ($\Delta F_{\text{CO}_2}$, $\Delta F_{\text{CH}_4}$, and
+          $\Delta F_{\text{N}_2\text{O}}$, including overlap terms) combine into time-dependent total
+          forcing $F_{\text{tot}}(t)$ and drive the transient ODE:
+        </p>
+        <div class="eq-box">
+          $$\frac{dT_K}{dt} = \frac{1}{\rho c_p d}\left[F_{\text{tot}}(t) - \epsilon_0 \sigma T_K^4\right]$$
+        </div>
 
-    <h3>3. Forward Euler Approximation &amp; Model Constants</h3>
-    <p>
-        Because the nonlinear ODE is integrated forward in time, Forward Euler's Method
-        (T_{K,n+1} = T_{K,n} + h * g(t_n, T_{K,n})) is used in Python with step size h = 0.01 yr
-        (315,360 s) over 125 years (1900&ndash;2025) starting from T_K(0) = 287.10 K:
-    </p>
-    <ul>
-        <li>Total Solar Irradiance (S_0): 1361 W/m^2; Albedo (alpha): 0.31; Emissivity (epsilon_0): 0.61</li>
-        <li>Stefan-Boltzmann constant (sigma): 5.67e-8 W/(m^2 K^4); Earth radius (R_E): ~6.371e6 m</li>
-        <li>Ocean mixed-layer heat capacity components: density rho = 1025 kg/m^3, specific heat c_p = 3993 J/(kg K), depth d = 50 m</li>
-    </ul>
+        <h2 id="sec3">3. Forward Euler Approximation &amp; Model Constants</h2>
+        <p>
+          Because the nonlinear ODE is integrated forward in time, Forward Euler's Method
+          ($T_{K,n+1} = T_{K,n} + h\,g(t_n, T_{K,n})$) is used in Python with step size
+          $h = 0.01\text{ yr}$ ($315,360\text{ s}$) over 125 years (1900&ndash;2025) starting from
+          $T_K(0) = 287.10\text{ K}$:
+        </p>
+        <ul>
+          <li>Total Solar Irradiance ($S_0$): $1361\text{ W/m}^2$; Albedo ($\alpha$): $0.31$; Emissivity ($\epsilon_0$): $0.61$</li>
+          <li>Stefan-Boltzmann constant ($\sigma$): $5.67 \times 10^{-8}\text{ W/(m}^2\text{ K}^4)$; Earth radius ($R_E$): $\approx 6.371 \times 10^6\text{ m}$</li>
+          <li>Ocean mixed-layer heat capacity components: density $\rho = 1025\text{ kg/m}^3$, specific heat $c_p = 3993\text{ J/(kg K)}$, depth $d = 50\text{ m}$</li>
+        </ul>
 
-    <h3>4. Validation Against NASA GISTEMP v4 (1900&ndash;2025)</h3>
-    <ul>
-        <li><b>RMSE:</b> 0.2369 &deg;C average deviation from NASA GISTEMP v4 observations</li>
-        <li><b>Model Standard Deviation (s):</b> 0.3846 &deg;C</li>
-        <li><b>Explained Variance (R^2):</b> ~0.528 (~53% of global temperature variability explained)</li>
-    </ul>
+        <h2 id="sec4">4. Validation Against NASA GISTEMP v4 (1900&ndash;2025)</h2>
+        <ul>
+          <li><b>RMSE:</b> $0.2369\text{ }^\circ\text{C}$ average deviation from NASA GISTEMP v4 observations</li>
+          <li><b>Model Standard Deviation ($s$):</b> $0.3846\text{ }^\circ\text{C}$</li>
+          <li><b>Explained Variance ($R^2$):</b> $\approx 0.528$ ($\sim 53\%$ of global temperature variability explained)</li>
+        </ul>
 
-    <p>
-        <img src="0d-energy-balance-climate-model.png" alt="Global Mean Temperature Comparison (1900-2025) & Residuals Plot" width="500"><br>
-    </p>
+        <h2 id="sec5">5. References &amp; Data Sources</h2>
+        <ul>
+          <li><a href="https://science.nasa.gov/earth/earth-observatory/measuring-earths-albedo-84499/">NASA Earth Observatory &ndash; Measuring Earth's Albedo</a></li>
+          <li><a href="https://earth.gsfc.nasa.gov/climate/projects/solar-irradiance/science">NASA GSFC &ndash; Total Solar Irradiance ($S_0$)</a></li>
+          <li><a href="https://www.sciencedirect.com/topics/engineering/stefan-boltzmann-constant">ScienceDirect &ndash; Stefan-Boltzmann Constant</a></li>
+          <li><a href="https://math.nyu.edu/~kleeman/zero_dim_ebm.html">Courant / NYU &ndash; Zero-Dimensional Energy Balance Model</a></li>
+          <li><a href="https://acd-ext.gsfc.nasa.gov/anonftp/acd/daac_ozone/Lecture4/Text/Semifinal/blackbodyintro.html">NASA GSFC &ndash; Blackbody Radiation</a></li>
+          <li><a href="https://www.epa.gov/ghgemissions/overview-greenhouse-gases">U.S. EPA &ndash; Overview of Greenhouse Gases</a></li>
+          <li><a href="https://www.ijmo.org/vol9/726-Q287.pdf">IJMO &ndash; Radiative Forcing &amp; Climate Modeling Reference</a></li>
+          <li><a href="https://ui.adsabs.harvard.edu/abs/2014EnEnv..25.1439L/abstract">ADS &ndash; $\text{CO}_2$ Radiative Forcing Formulation</a></li>
+          <li><a href="https://www.ipcc.ch/site/assets/uploads/2018/07/WGI_AR5_Chap_8_SM.pdf">IPCC AR5 WG1 Chapter 8 Supplementary Material &ndash; $\text{CH}_4$ &amp; $\text{N}_2\text{O}$ Forcing</a></li>
+        </ul>
+      </main>
 
-    <h3>5. References &amp; Data Sources</h3>
-    <ul>
-        <li><a href="https://science.nasa.gov/earth/earth-observatory/measuring-earths-albedo-84499/">NASA Earth Observatory &ndash; Measuring Earth's Albedo</a></li>
-        <li><a href="https://earth.gsfc.nasa.gov/climate/projects/solar-irradiance/science">NASA GSFC &ndash; Total Solar Irradiance (S_0)</a></li>
-        <li><a href="https://www.sciencedirect.com/topics/engineering/stefan-boltzmann-constant">ScienceDirect &ndash; Stefan-Boltzmann Constant</a></li>
-        <li><a href="https://math.nyu.edu/~kleeman/zero_dim_ebm.html">Courant / NYU &ndash; Zero-Dimensional Energy Balance Model</a></li>
-        <li><a href="https://acd-ext.gsfc.nasa.gov/anonftp/acd/daac_ozone/Lecture4/Text/Semifinal/blackbodyintro.html">NASA GSFC &ndash; Blackbody Radiation</a></li>
-        <li><a href="https://www.epa.gov/ghgemissions/overview-greenhouse-gases">U.S. EPA &ndash; Overview of Greenhouse Gases</a></li>
-        <li><a href="https://www.ijmo.org/vol9/726-Q287.pdf">IJMO &ndash; Radiative Forcing &amp; Climate Modeling Reference</a></li>
-        <li><a href="https://ui.adsabs.harvard.edu/abs/2014EnEnv..25.1439L/abstract">ADS &ndash; CO2 Radiative Forcing Formulation</a></li>
-        <li><a href="https://www.ipcc.ch/site/assets/uploads/2018/07/WGI_AR5_Chap_8_SM.pdf">IPCC AR5 WG1 Chapter 8 Supplementary Material &ndash; CH4 &amp; N2O Forcing</a></li>
-    </ul>
+      <aside class="right-panel" aria-label="Validation Figure">
+        <h2>Validation Figure</h2>
 
-    <hr>
+        <div class="figure-block">
+          <div class="figure-title">Temperature &amp; Residuals</div>
+          <div class="figure-meta">
+            <span>1900&ndash;2025</span>
+            <span>RMSE: 0.2369 &deg;C</span>
+          </div>
+          <img src="0d-energy-balance-climate-model.png" alt="Global Mean Temperature Comparison (1900-2025) &amp; Residuals Plot">
+          <div class="figure-caption">
+            0D Energy-Balance model vs. NASA GISTEMP v4 and residuals analysis.
+          </div>
+        </div>
 
-    <p>
-        [ <a href="projects.html">&laquo; Back to Projects</a> | <a href="index.html">Home</a> ]
-    </p>
-    <p><small>Last updated: November 2026</small></p>
+        <div class="station-box">
+          <div class="station-header">Statistical Summary</div>
+          <b>RMSE:</b> $0.2369\text{ }^\circ\text{C}$<br>
+          <b>Std. Dev. ($s$):</b> $0.3846\text{ }^\circ\text{C}$<br>
+          <b>Explained Var. ($R^2$):</b> $\approx 0.528$
+        </div>
+      </aside>
+    </div>
 
+    <footer class="site-footer">
+      <div>[ <a href="projects.html">&laquo; Back to Projects</a> | <a href="index.html">Home</a> ]</div>
+      <div>Last updated: November 2026</div>
+    </footer>
+  </div>
 </body>
 </html>

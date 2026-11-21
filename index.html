@@ -1,61 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carden Taylor - Geophysics</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carden Taylor - Climate Geophysics &amp; Modeling</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="page-wrapper">
+    <header class="top-banner">
+      <div class="banner-left">
+        <div class="banner-titles">
+          <div class="agency-line">Carden Taylor &mdash; Geophysical Engineering</div>
+          <div class="sub-line">Climate Geophysics &amp; Applied Mathematics Portfolio</div>
+        </div>
+      </div>
+      <div class="banner-right">
+        Colorado School of Mines<br>
+        School of Earth, Space, and Planets<br>
+        Golden, Colorado
+      </div>
+    </header>
 
-    <h1>Carden Taylor</h1>
-    <p><i>Geophysics &middot; Climate Science &middot; Computational Modeling</i></p>
+    <div class="portal-body">
+      <nav class="left-nav" aria-label="Site Navigation">
+        <ul>
+          <li><a href="index.html" class="active">Portal Home</a></li>
+          <li><a href="#about">About &amp; Background</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="#projects">Ongoing Work</a></li>
+          <li><a href="0d-energy-balance-climate-model.html">0D EBM Project</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
 
-    <p>
-        [ <a href="index.html">Home</a> |
-        <a href="#about">About</a> |
-        <a href="#projects">Projects</a> |
-        <a href="resume.pdf">Resume</a> |
-        <a href="#contact">Contact</a> ]
-    </p>
+        <div class="sidebar-box">
+          <h4>Student Profile</h4>
+          <b>Major:</b> Geophysical Engineering<br>
+          <b>Minor:</b> Applied Mathematics &amp; Statistics<br>
+          <b>Focus:</b> Climate<br>
+          <b>Cumulative GPA:</b> 3.54<br>
+          <b>Class:</b> Sophomore
+        </div>
+      </nav>
 
-    <hr>
+      <main class="center-main">
+        <h1 id="about">Carden Taylor</h1>
+        <p>
+          I am a sophomore at the Colorado School of Mines, majoring in Geophysical Engineering
+          with a focus on climate geophysics and a minor in Applied Mathematics and Statistics. My work
+          centers on translating physical Earth-system processes into quantitative models, numerical
+          approximations, and statistical comparisons against observational records.
+        </p>
+        <p>
+          Outside of coursework and numerical modeling, I enjoy spending time in the mountains around
+          Golden and building small analytical and coding projects. I am open to undergraduate research
+          opportunities, summer internships, and collaborative scientific work.
+        </p>
 
-    <h2 id="about">About Me</h2>
-    <p>
-        I am a sophomore at the Colorado School of Mines, majoring in Geophysical Engineering with a focus on climate geophysics and a minor in Applied Mathematics and Statistics. My work centers on using mathematical modeling, numerical methods, and data analysis to study how physical Earth systems respond to forcing over time. I am currently looking for undergraduate research opportunities, internships, and collaborative projects in climate modeling and geophysics.
-    </p>
+        <h2 id="projects">Ongoing Work</h2>
 
-    <hr>
+        <div class="update-item">
+          <span class="update-date">November 2026:</span> Founded <b>Climate@Mines</b>, a student-organization centered on understanding climate science and promoting climate awareness. The first official meeting will occur in December, 2026. Current goals of the student organization include bringing in climate scientists to discuss their research, organizing student outreach events on campus to promote climate literacy, and the development of an on-campus weather station.<br><br>
+          <span class="update-date">October 2026:</span> Completed the transient zero-dimensional
+          energy-balance climate model (<a href="0d-energy-balance-climate-model.html">0D EBM (1900&ndash;2025)</a>)
+          incorporating IPCC / Myhre et al. (1998) radiative forcing for CO<sub>2</sub>, CH<sub>4</sub>,
+          and N<sub>2</sub>O, integrated via Forward Euler's method and benchmarked against NASA GISTEMP v4
+          (RMSE = 0.2369 &deg;C, R<sup>2</sup> &approx; 0.528).
+        </div>
 
-    <h2 id="research">Research Interests</h2>
-    <ul>
-        <li>Climate Modeling</li>
-        <li>Physical Oceanography</li>
-        <li>Remote Sensing</li>
-    </ul>
+        <div class="update-item">
+          <span class="update-date">Research Interests:</span> Radiative forcing and climate sensitivity,
+          ocean mixed-layer heat uptake and transient dynamics, numerical ODE integration, and geophysical
+          time-series validation.
+        </div>
 
-    <hr>
+        <h2 id="datasets">Featured Model &amp; Reference Links</h2>
+        <p>
+          Check out the <a href="0d-energy-balance-climate-model.html">Zero-Dimensional Energy-Balance Climate Model</a>
+          write-up for derivations, Forward Euler steps, and validation metrics.
+        </p>
+        <p>
+          External observational and physical references used in current modeling work include
+          <a href="https://earth.gsfc.nasa.gov/climate/projects/solar-irradiance/science">NASA GSFC Solar Irradiance</a>,
+          <a href="https://science.nasa.gov/earth/earth-observatory/measuring-earths-albedo-84499/">NASA Earth Observatory Albedo</a>,
+          and <a href="https://www.ipcc.ch/site/assets/uploads/2018/07/WGI_AR5_Chap_8_SM.pdf">IPCC AR5 Radiative Forcing</a>.
+        </p>
 
-    <h2 id="projects">Selected Projects</h2>
-    <ul>
-        <li>
-            <b>0D Energy Balance Climate Model (1900&ndash;2025)</b> &mdash;
-            <a href="0d-energy-balance-climate-model.html">View details &raquo;</a>
-        </li>
-    </ul>
+        <h2 id="contact">Contact</h2>
+        <p>
+          Email: <a href="mailto:cardenataylor@gmail.com">cardenataylor@gmail.com</a><br>
+          GitHub: <a href="https://github.com/carden-taylor">github.com/carden-taylor</a>
+        </p>
+      </main>
 
-    <hr>
+      <aside class="right-panel" aria-label="Model Figures and Summary">
+        <h2>Model Figures</h2>
 
-    <h2 id="contact">Contact</h2>
-    <p>
-        Get in touch about research and collaboration:<br>
-        Email: <a href="mailto:cardenataylor@gmail.com">cardenataylor@gmail.com</a><br>
-        GitHub: <a href="https://github.com/carden-taylor">github.com/carden-taylor</a>
-    </p>
+        <div class="figure-block">
+          <div class="figure-title">Temperature Simulation</div>
+          <div class="figure-meta">
+            <span>1900&ndash;2025 EBM</span>
+            <span>RMSE: 0.2369 &deg;C</span>
+          </div>
+          <!-- Replace temp-comparison-1900-2025.png with your exported plot image -->
+          <img src="0d-energy-balance-climate-model.png" alt="Global Mean Temperature Comparison (1900-2025) vs NASA GISTEMP v4">
+          <div class="figure-caption">
+            0D Energy-Balance model compared against NASA GISTEMP v4 observations.
+          </div>
+        </div>
+      </aside>
+    </div>
 
-    <hr>
-
-    <p><small>Last updated: November 2026</small></p>
-
+    <footer class="site-footer">
+      <div>Last updated: 21 November 2026</div>
+    </footer>
+  </div>
 </body>
 </html>
